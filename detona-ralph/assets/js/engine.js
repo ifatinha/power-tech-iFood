@@ -35,11 +35,16 @@ function countDown() {
     let time = state.values.currentTime--;
     state.view.time.innerText = time;
 
+    if (time <= 10) {
+        state.view.time.classList.add("red");
+    }
+
     if (state.values.currentTime <= 0) {
         clearInterval(state.actions.countDownTimeId);
         clearInterval(state.actions.timerId);
-        playSound("arcade.mp3");
+        playSound("gameOver.mp3");
         alert(`Game Over! Seu Resultado foi ${state.values.points} pontos!`);
+        state.view.time.classList.remove("red");
     }
 }
 
