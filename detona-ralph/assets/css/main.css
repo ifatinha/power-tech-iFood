@@ -64,7 +64,7 @@ body {
     background-color: rgba(0, 0, 0, .2);
     border          : 2px solid var(--white);
     height          : 180px;
-    flex            : 1;
+    flex            : 0 1 180px;
     width           : 180px;
 }
 
