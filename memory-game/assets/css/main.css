@@ -1,4 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&display=swap');
+
+:root {
+    --primary-font: 'Arvo', serif;
+}
 
 html,
 body {
@@ -8,8 +12,9 @@ body {
 
 body {
     background-color: rgba(242, 242, 242, .5);
-    font-family     : 'Merriweather', serif;
+    font-family     : var(--primary-font);
     font-size       : 16px;
+    user-select     : none;
 }
 
 .flex {
@@ -30,7 +35,7 @@ body {
     box-shadow      : 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
     flex-direction  : column;
     gap             : 1rem;
-    max-width       : 800px;
+    max-width       : 1000px;
     padding         : 1rem;
     width           : 100%;
 }
@@ -60,42 +65,72 @@ body {
 }
 
 .resetBtn {
-    border        : none;
-    border-radius : .5rem;
-    cursor        : pointer;
-    font-size     : 1.5rem;
-    font-family   : inherit;
-    font-weight   : 600;
-    letter-spacing: .1rem;
-    padding       : 16px;
-    transition    : .3s ease-in-out;
-    text-transform: uppercase;
-    width         : 100%;
-}
-
-.resetBtn:hover {
-    opacity: .9;
-}
-
-.game {
-    background-color: darkblue;
-    flex-wrap       : wrap;
-    flex-grow       : 1;
-    gap             : 0.625rem;
-    margin          : 1rem 0;
-    perspective     : 500px;
-    transform-style : preserve-3d;
+    background-color: #ddd;
+    border          : none;
+    border-radius   : .5rem;
+    cursor          : pointer;
+    font-size       : 1.5rem;
+    font-family     : inherit;
+    font-weight     : 600;
+    letter-spacing  : .1rem;
+    padding         : 16px;
+    transition      : .3s ease-in-out;
+    text-transform  : uppercase;
     width           : 100%;
 }
 
-.item {
+.resetBtn:hover {
+    background-color: #f1f1f1;
+}
+
+.game {
+    flex-wrap      : wrap;
+    flex-grow      : 1;
+    gap            : 1rem;
+    margin         : 1rem 0;
+    perspective    : 500px;
+    transform-style: preserve-3d;
+    width          : 100%;
+}
+
+.game-card {
     align-items     : center;
     background-color: #fff;
-    box-shadow      : 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    display         : flex;
-    flex-grow       : 1;
-    height          : 100px;
-    justify-content : center;
-    position        : relative;
-    width           : 100px;
+    box-shadow      : 15px 15px 30px #bebebe,
+        -15px -15px 30px #ffffff;
+    border-radius  : 8px;
+    cursor         : pointer;
+    display        : flex;
+    height         : 120px;
+    justify-content: center;
+    position       : relative;
+    transition     : 0.25s;
+    transform      : rotateY(180deg);
+    width          : 120px;
+}
+
+.game-card::after {
+    backface-visibility: hidden;
+    background-color   : #00b300;
+    content            : "";
+    inset              : 0;
+    position           : absolute;
+    transition         : 0.25s;
+    transform          : rotateY(0deg);
+}
+
+.game-card img {
+    height    : 100%;
+    object-fit: cover;
+    width     : 100%;
+}
+
+.game-card.cardOpen {
+    transform: rotateY(0deg);
+}
+
+.cardOpen::after,
+.cardMatch::after {
+    content  : "";
+    transform: rotateY(180deg);
 }
