@@ -23,17 +23,21 @@
             <div class="header flex">
                 <div class="click">
                     <h2>Clicks</h2>
-                    <span id="clicks">0</span>
+                    <span id="clicks"></span>
                 </div>
                 <div class="timer">
                     <h2>Your Time</h2>
-                    <span id="time">0</span>
+                    <form name="form-time">
+                        <span id="hour">00</span>:
+                        <span id="minute">00</span>:
+                        <span id="secont">00</span>
+                    </form>
                 </div>
             </div>
 
             <div class="game flex"></div>
-                
-            <button class="resetBtn" onclick="window.location.reload()">
+
+            <button class="resetBtn" id="resetBtn">
                 Reset Game
             </button>
         </main>

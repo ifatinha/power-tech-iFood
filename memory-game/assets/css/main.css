@@ -134,3 +134,7 @@ body {
     content  : "";
     transform: rotateY(180deg);
 }
+
+.cardMatch {
+    pointer-events: none;
+}
