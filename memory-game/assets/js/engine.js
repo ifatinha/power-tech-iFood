@@ -1,6 +1,11 @@
 const states = {
     view: {
+        formTime: document.querySelector("#form-time"),
+        hour: document.querySelector("#hour"),
+        minute: document.querySelector("#minute"),
+        second: document.querySelector("#second"),
         resetBtn: document.querySelector("#resetBtn"),
+        pauseBtn: document.querySelector("#pauseBtn"),
     },
 
     value: {
@@ -50,7 +55,10 @@ const states = {
         ],
         openCards: [],
         countClicks: 0,
-        time: 0,
+        stopwatch: null,
+        hourTemp: 0,
+        minuteTemp: 0,
+        secontTemp: 0,
     }
 }
 
@@ -80,7 +88,7 @@ function checkMath() {
 
     if (document.querySelectorAll(".cardMatch").length ===
         states.value.images.length) {
-        alert(`Você precisou de ${countClicks} clicks para concluir!`);
+        alert(`Você precisou de ${states.value.countClicks} clicks para concluir!`);
     }
 }
 
@@ -130,8 +138,38 @@ function resetGame() {
     });
 }
 
+function returnDate(input) {
+    return input > 10 ? input : `0${input}`;
+}
+
+function timer() {
+    if (states.value.secontTemp === 60) {
+        states.value.secontTemp = 0;
+        states.value.minuteTemp++;
+    }
+
+    if (states.value.minuteTemp === 60) {
+        states.value.minuteTemp = 0;
+        states.value.hourTemp++;
+    }
+
+    // states.view.hour.innerText = returnDate(states.value.hourTemp);
+    // states.view.minute.innerText = returnDate(states.value.minuteTemp);
+    // states.view.second.innerText = returnDate(states.value.secontTemp);
+    // console.log(returnDate(states.view.second.innerText))
+}
+
+function startTime() {
+    states.value.stopwatch = setInterval(() => { timer(), 1000 });
+}
+
+function pauseTime() {
+    clearInterval(states.value.stopwatch);
+}
+
 ((function initialize() {
     shuffleImages();
     createGamer();
+    startTime();
     resetGame();
 }))();

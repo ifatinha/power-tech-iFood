@@ -79,7 +79,8 @@ body {
     width           : 100%;
 }
 
-.resetBtn:hover {
+.resetBtn:hover,
+#pauseBtn:hover {
     background-color: #f1f1f1;
 }
 
@@ -137,4 +138,15 @@ body {
 
 .cardMatch {
     pointer-events: none;
+}
+
+#pauseBtn {
+    background      : transparent;
+    background-color: #ddd;
+    border          : none;
+    cursor          : pointer;
+    height          : 20px;
+    margin-left     : 0.625rem;
+    transition      : .3s ease-in-out;
+    width           : 20px;
 }
