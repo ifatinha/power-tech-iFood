@@ -23,27 +23,31 @@
             <div class="header flex">
                 <div class="click">
                     <h2>Clicks</h2>
-                    <span id="clicks"></span>
+                    <span id="clicks">0</span>
                 </div>
                 <div class="timer">
                     <h2>Your Time</h2>
-                    <form name="form-time" class="flex form-timer">
-                        <span id="hour"></span>:
-                        <span id="minute"></span>:
-                        <span id="second"></span>
-
-                        <button type="button" id="pauseBtn">
-                            <i class="fa-solid fa-pause"></i>
-                        </button>
-                    </form>
+                    <p id="time">
+                        <span id="hour">00</span>:<span id="minute">00</span>:<span id="second">00</span>
+                    </p>
                 </div>
             </div>
 
-            <div class="game flex"></div>
+            <div class="btns flex">
+                <button class="btn" id="startBtn">
+                    Start Game
+                </button>
 
-            <button class="resetBtn" id="resetBtn">
-                Reset Game
-            </button>
+                <button class="btn" id="pauseBtn">
+                    Pause Game
+                </button>
+
+                <button class="btn" id="resetBtn">
+                    Reset Game
+                </button>
+            </div>
+
+            <div class="game flex"></div>
         </main>
     </div>
     <script defer src="./assets/js/engine.js"></script>

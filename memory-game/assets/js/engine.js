@@ -1,11 +1,12 @@
 const states = {
     view: {
-        formTime: document.querySelector("#form-time"),
-        hour: document.querySelector("#hour"),
-        minute: document.querySelector("#minute"),
-        second: document.querySelector("#second"),
-        resetBtn: document.querySelector("#resetBtn"),
+        hourHtml: document.querySelector("#hour"),
+        minuteHtml: document.querySelector("#minute"),
+        secondHtml: document.querySelector("#second"),
+        startBtn: document.querySelector("#startBtn"),
         pauseBtn: document.querySelector("#pauseBtn"),
+        resetBtn: document.querySelector("#resetBtn"),
+        time: document.querySelector("#time"),
     },
 
     value: {
@@ -56,9 +57,12 @@ const states = {
         openCards: [],
         countClicks: 0,
         stopwatch: null,
-        hourTemp: 0,
-        minuteTemp: 0,
-        secontTemp: 0,
+        hour: 0,
+        minute: 0,
+        second: 0,
+        milliseconds: 0,
+        stopwatch: null,
+        stopped: true,
     }
 }
 
@@ -88,7 +92,10 @@ function checkMath() {
 
     if (document.querySelectorAll(".cardMatch").length ===
         states.value.images.length) {
-        alert(`Você precisou de ${states.value.countClicks} clicks para concluir!`);
+        alert(`Parabéns!! Você terminou o jodo
+        Seu tempo: ${states.view.time.innerText}
+        Número de clicks:  ${states.value.countClicks}`);
+        window.location.reload();
     }
 }
 
@@ -111,7 +118,6 @@ function handleClick() {
 
 function createGamer() {
     for (let i = 0; i < states.value.images.length; i++) {
-
         let card = document.createElement("div");
         card.classList.add("game-card");
 
@@ -127,49 +133,79 @@ function createGamer() {
     }
 }
 
+function startGame() {
+    states.view.startBtn.addEventListener("click", () => {
+        if (states.value.stopped) {
+            states.value.stopwatch = setInterval(time, 10);
+            states.value.stopped = false;
+        }
+    });
+}
+
+function pauseGame() {
+    states.view.pauseBtn.addEventListener("click", () => {
+        clearInterval(states.value.stopwatch);
+        states.value.stopped = true;
+    })
+}
+
 function resetGame() {
 
     states.view.resetBtn.addEventListener("click", () => {
         const resp = confirm(`Deseja reiniciar o jogo? `);
 
         if (resp) {
-            window.location.reload()
+            window.location.reload();
         }
     });
 }
 
-function returnDate(input) {
-    return input > 10 ? input : `0${input}`;
-}
+function time() {
+    states.value.milliseconds += 10;
 
-function timer() {
-    if (states.value.secontTemp === 60) {
-        states.value.secontTemp = 0;
-        states.value.minuteTemp++;
+    if (states.value.milliseconds >= 1000) {
+        states.value.milliseconds = 0;
+        states.value.second++;
     }
 
-    if (states.value.minuteTemp === 60) {
-        states.value.minuteTemp = 0;
-        states.value.hourTemp++;
+    if (states.value.second >= 60) {
+        states.value.second = 0;
+        states.value.minute++;
     }
 
-    // states.view.hour.innerText = returnDate(states.value.hourTemp);
-    // states.view.minute.innerText = returnDate(states.value.minuteTemp);
-    // states.view.second.innerText = returnDate(states.value.secontTemp);
-    // console.log(returnDate(states.view.second.innerText))
+    if (states.value.minute >= 60) {
+        states.value.minute = 0;
+        states.value.hour++;
+    }
+
+    updateHtml();
 }
 
-function startTime() {
-    states.value.stopwatch = setInterval(() => { timer(), 1000 });
-}
+function updateHtml() {
 
-function pauseTime() {
-    clearInterval(states.value.stopwatch);
+    if (states.value.second >= 10) {
+        states.view.secondHtml.innerText = `${states.value.second}`;
+    } else {
+        states.view.secondHtml.innerText = `0${states.value.second}`;
+    }
+
+    if (states.value.minute >= 10) {
+        states.view.minuteHtml.innerText = `${states.value.minute}`;
+    } else {
+        states.view.minuteHtml.innerText = `0${states.value.minute}`;
+    }
+
+    if (states.value.hour >= 10) {
+        states.view.hourHtml.innerText = `${states.value.hour}`;
+    } else {
+        states.view.hourHtml.innerText = `0${states.value.hour}`;
+    }
 }
 
 ((function initialize() {
     shuffleImages();
     createGamer();
-    startTime();
+    startGame();
+    pauseGame();
     resetGame();
 }))();

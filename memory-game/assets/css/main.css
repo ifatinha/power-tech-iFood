@@ -64,12 +64,17 @@ body {
     font-weight: 500;
 }
 
-.resetBtn {
+.btns {
+    gap  : 1rem;
+    width: 100%;
+}
+
+.btn {
     background-color: #ddd;
     border          : none;
     border-radius   : .5rem;
     cursor          : pointer;
-    font-size       : 1.5rem;
+    font-size       : 1.2rem;
     font-family     : inherit;
     font-weight     : 600;
     letter-spacing  : .1rem;
@@ -79,7 +84,7 @@ body {
     width           : 100%;
 }
 
-.resetBtn:hover,
+.btn:hover,
 #pauseBtn:hover {
     background-color: #f1f1f1;
 }
@@ -138,15 +143,4 @@ body {
 
 .cardMatch {
     pointer-events: none;
-}
-
-#pauseBtn {
-    background      : transparent;
-    background-color: #ddd;
-    border          : none;
-    cursor          : pointer;
-    height          : 20px;
-    margin-left     : 0.625rem;
-    transition      : .3s ease-in-out;
-    width           : 20px;
 }
