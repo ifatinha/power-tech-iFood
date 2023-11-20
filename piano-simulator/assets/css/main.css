@@ -32,6 +32,11 @@ body {
     width           : 100%;
 }
 
+header {
+    color          : #b2b2b2;
+    justify-content: space-between !important;
+}
+
 header h2 {
     font-size: 1.6rem;
 }
