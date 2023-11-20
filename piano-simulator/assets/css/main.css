@@ -12,6 +12,7 @@ body {
 
 body {
     background-color: #e3f2fd;
+    color           : #fff;
     font-family     : 'Poppins', sans-serif;
     min-height      : 100%;
 }
@@ -23,11 +24,12 @@ body {
 }
 
 .container {
-    border       : 2px solid #000;
-    border-radius: 1.25rem;
-    max-width    : 780px;
-    padding      : 2rem 2.625rem;
-    width        : 100%;
+    background-color: #000;
+    border          : 2px solid #000;
+    border-radius   : 1.25rem;
+    max-width       : 780px;
+    padding         : 2rem 2.625rem;
+    width           : 100%;
 }
 
 header h2 {
@@ -57,4 +59,26 @@ header .column span {
     height          : 30px;
     position        : relative;
     width           : 60px;
+}
+
+.keys-check input::before {
+    background-color: #8c8c8c;
+    border-radius   : 50%;
+    content         : "";
+    height          : 20px;
+    left            : 0.313rem;
+    position        : absolute;
+    transform       : translateY(-50%);
+    transition      : all .3s ease-in-out;
+    top             : 50%;
+    width           : 20px;
+}
+
+.keys-check input:checked::before {
+    background-color: #fff;
+    left            : 2rem;
+}
+
+.piano-keys {
+    margin-top: 2.5rem;
 }
