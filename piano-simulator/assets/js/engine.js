@@ -1,14 +1,13 @@
 function piano() {
     const pianoKeys = document.querySelectorAll(".piano-keys .key");
 
-    const mapedKeys = []
+    const mapedKeys = [];
 
-    function newAudio(name, type = "wav") {
-        return new Audio(`./assets/audios/${name}.${type}`);
-    }
-
-    function playTune(key) {
-        newAudio(key).play();
+    let audio = new Audio("./assets/audios/a.wav");
+    
+    function playTune(key, type = "wav") {
+        audio.src = `./assets/audios/${key}.${type}`;
+        audio.play();
 
         const clickedKey = document.querySelector(`[data-key='${key}']`);
         clickedKey.classList.add("active");
@@ -27,10 +26,18 @@ function piano() {
 
     document.addEventListener("keydown", (e) => {
         if (mapedKeys.includes(e.key)) {
-            console.log("Aqui estou!");
             playTune(e.key);
         }
     })
+
+    /** volume */
+    const volume = document.querySelector("#volume");
+
+    function handleVolume(e) {
+        audio.volume = e.target.value;
+    }
+
+    volume.addEventListener("input", handleVolume);
 }
 
 (function initialize() {

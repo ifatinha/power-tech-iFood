@@ -17,14 +17,16 @@
 <body class="flex">
 
     <div class="container">
-        
+
         <header class="flex">
             <h2>Virtual Piano</h2>
             <div class="column volume-slider">
-                <span>Volume</span> <input type="range" name="volume" id="volume">
+                <span>Volume</span>
+                <input type="range" name="volume" id="volume" min="0" max="1" value="0.5" step="any">
             </div>
             <div class="column keys-check">
-                <span>Teclas</span> <input type="checkbox" name="" id="active-key">
+                <span>Teclas</span>
+                <input type="checkbox" name="" id="active-key">
             </div>
         </header>
 
