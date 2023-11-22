@@ -101,7 +101,7 @@ header .column span {
     touch-action  : manipulation;
 }
 
-.key:active {
+.key.active {
     box-shadow         : 2px 2px 0px rgb(140, 32, 212);
     transform          : translate(3px, 3px);
     transition-duration: .3s;
