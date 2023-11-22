@@ -15,6 +15,7 @@ body {
     color           : #fff;
     font-family     : 'Poppins', sans-serif;
     min-height      : 100%;
+    padding: 0 2%;
 }
 
 .flex {
@@ -28,7 +29,7 @@ body {
     border          : 2px solid #000;
     border-radius   : 1.25rem;
     max-width       : 780px;
-    padding         : 2rem 2.625rem;
+    padding         : 2rem 2.6rem;
     user-select     : none;
     width           : 100%;
 }
@@ -59,7 +60,7 @@ header .column span {
 
 .keys-check input {
     appearance      : none;
-    background-color: #4b4b4b;
+    background-color: #8c8c8c;
     border-radius   : 1.875rem;
     cursor          : pointer;
     height          : 30px;
@@ -68,7 +69,7 @@ header .column span {
 }
 
 .keys-check input::before {
-    background-color: #8c8c8c;
+    background-color: #4b4b4b;
     border-radius   : 50%;
     content         : "";
     height          : 20px;
@@ -91,7 +92,6 @@ header .column span {
 }
 
 .key {
-    border-radius : 10px;
     box-shadow    : 5px 5px 0px rgb(140, 32, 212);
     color         : #a2a2a2;
     cursor        : pointer;
