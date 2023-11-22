@@ -4,7 +4,7 @@ function piano() {
     const mapedKeys = [];
 
     let audio = new Audio("./assets/audios/a.wav");
-    
+
     function playTune(key, type = "wav") {
         audio.src = `./assets/audios/${key}.${type}`;
         audio.play();
@@ -38,6 +38,17 @@ function piano() {
     }
 
     volume.addEventListener("input", handleVolume);
+
+    /** Controle de teclas */
+    const keyboard = document.querySelector("#activeKeyboard");
+   
+    function showHideKeys(){
+        pianoKeys.forEach((key) => {
+            key.classList.toggle("hide");
+        })
+    }
+
+    keyboard.addEventListener("click", showHideKeys);
 }
 
 (function initialize() {
