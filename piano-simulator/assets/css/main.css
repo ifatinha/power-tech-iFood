@@ -86,7 +86,9 @@ header .column span {
     left            : 2rem;
 }
 
-.hide {}
+.key.hide span {
+    display: none;
+}
 
 .piano-keys {
     align-items: start;
