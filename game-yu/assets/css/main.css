@@ -91,7 +91,12 @@ body {
     align-items    : center;
     flex-direction : column;
     flex           : 1 1 70%;
-    justify-content: space-around;
+    justify-content: space-between;
+    padding        : 1rem;
+}
+
+.card-box {
+    width: 100%;
 }
 
 .card-versus {
@@ -100,14 +105,20 @@ body {
 }
 
 .versus-top {
-    gap: 2rem;
+    gap: 1rem;
+}
+
+.versus-top,
+.versus-bottom {
+    align-items    : center;
+    justify-content: center;
 }
 
 .card-infield {
     border       : 2px solid #fff;
     border-radius: 4px;
-    height       : 180px;
-    width        : 125px;
+    height       : 12rem;
+    width        : 8rem;
 }
 
 .card-infield img {
@@ -116,7 +127,17 @@ body {
     width     : 100%;
 }
 
-.versus-bottom {
-    align-items     : center;
-    justify-content : center;
+#next-duel {
+    display: none;
+}
+
+/* card box */
+.card-box {
+    align-items    : center;
+    display        : flex;
+    gap            : 1rem;
+    height         : 9rem;
+    justify-content: space-around;
+    padding        : 1rem;
+    width          : 100%;
 }
