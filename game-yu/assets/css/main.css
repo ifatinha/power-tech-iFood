@@ -88,8 +88,35 @@ body {
 }
 
 .container__right {
+    align-items    : center;
+    flex-direction : column;
+    flex           : 1 1 70%;
+    justify-content: space-around;
+}
+
+.card-versus {
+    gap           : 1rem;
+    flex-direction: column;
+}
+
+.versus-top {
+    gap: 2rem;
+}
+
+.card-infield {
+    border       : 2px solid #fff;
+    border-radius: 4px;
+    height       : 180px;
+    width        : 125px;
+}
+
+.card-infield img {
+    height    : 100%;
+    object-fit: cover;
+    width     : 100%;
+}
+
+.versus-bottom {
     align-items     : center;
-    flex-direction  : column;
-    flex            : 1 1 70%;
-    justify-content : space-around;
+    justify-content : center;
 }
