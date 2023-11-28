@@ -53,11 +53,32 @@ const cardData = [
 
 ]
 
-function init() {
+const playerSides = {
+    player: "player-field-card",
+    computer: "computer-field-card",
+};
 
+function getRandomCardId(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+
+function createCardImage(randomIdCard, fieldSide) { }
+
+async function drawCards(cardNumbers, fieldSide) {
+    for (let i = 0; i < cardNumbers; i++) {
+        const randomIdCard = await getRandomCardId(0, 2);
+        const cardImage = await createCardImage(randomIdCard, fieldSide);
+        document.querySelector(`#${fieldSide}`).appendChild(cardImage);
+    }
+}
+
+function init() {
+    drawCards(5, playerSides.player);
+    drawCards(5, playerSides.computer);
+}
+
+function resetDuel() { }
 
 (() => {
     init();
-    console.log(cardData[0].img);
 })()
