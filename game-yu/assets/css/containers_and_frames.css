@@ -28,7 +28,7 @@
   -webkit-box-sizing: border-box;
 
   /* background */
-  background         : url("../assets/rpg/background-image.png") repeat repeat;
+  background         : url("./../rpg/background-image.png") repeat repeat;
   background-clip    : padding-box;
   background-origin  : padding-box;
   background-position: center;
