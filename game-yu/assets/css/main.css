@@ -95,10 +95,6 @@ body {
     padding        : 1rem;
 }
 
-.card-box {
-    width: 100%;
-}
-
 .card-versus {
     gap           : 1rem;
     flex-direction: column;
@@ -117,6 +113,7 @@ body {
 .card-infield {
     border       : 2px solid #fff;
     border-radius: 4px;
+    cursor       : pointer;
     height       : 12rem;
     width        : 8rem;
 }
@@ -140,4 +137,8 @@ body {
     justify-content: space-around;
     padding        : 1rem;
     width          : 100%;
+}
+
+.card {
+    height: 100px;
 }
