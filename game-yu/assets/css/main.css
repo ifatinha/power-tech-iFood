@@ -61,7 +61,7 @@ body {
 
 .container__left {
     align-items    : center;
-    flex           : 1 1 30%;
+    flex           : 1 1 35%;
     flex-direction : column;
     justify-content: space-around;
     min-width      : 280px;
@@ -71,12 +71,20 @@ body {
     text-align: center;
 }
 
+.menu_avatar {
+    align-items    : center;
+    display        : flex;
+    flex           : 1;
+    justify-content: center;
+}
+
 .card_details {
     align-items    : center;
     flex-direction : column;
     gap            : 1rem;
     height         : 6rem;
     justify-content: space-between;
+    text-align     : center;
 }
 
 #card-name {
@@ -90,7 +98,7 @@ body {
 .container__right {
     align-items    : center;
     flex-direction : column;
-    flex           : 1 1 70%;
+    flex           : 1 1 65%;
     justify-content: space-between;
     padding        : 1rem;
 }
@@ -133,13 +141,18 @@ body {
     align-items    : center;
     display        : flex;
     gap            : 1rem;
-    height         : 9rem;
+    height         : 10rem;
     justify-content: space-around;
     padding        : 1rem;
     width          : 100%;
 }
 
 .card {
-    cursor: pointer;
-    height: 100px;
+    cursor    : pointer;
+    height    : 110px;
+    transition: .3s ease-in-out;
+}
+
+.card:hover {
+    transform: scale(1.1);
 }

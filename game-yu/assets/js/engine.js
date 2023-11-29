@@ -67,8 +67,10 @@ function setCardsField(cardImageId) {
     
 }
 
-function drawSelectCard(cardImageId) {
-    
+function drawSelectCard(index) {
+    state.cardSprites.avatar.src = cardData[index].img;
+    state.cardSprites.avatarName.innerText = cardData[index].name;
+    state.cardSprites.avatarType.innerText = `Attribute: ${cardData[index].type}`;
 }
 
 async function createCardImage(idCard, fieldSide) {
@@ -79,14 +81,15 @@ async function createCardImage(idCard, fieldSide) {
     cardImage.classList.add("card");
 
     if (fieldSide === playerSides.player) {
+
+        cardImage.addEventListener("mouseover", () => {
+            drawSelectCard(cardImage.getAttribute("data-id"));
+        });
+
         cardImage.addEventListener("click", () => {
             setCardsField(cardImage.getAttribute("data-id"));
         });
     }
-
-    cardImage.addEventListener("mouseover", () => {
-        drawSelectCard(cardImage.getAttribute("data-id"));
-    })
 
     return cardImage;
 }
