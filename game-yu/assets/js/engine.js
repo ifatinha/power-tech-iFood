@@ -16,6 +16,13 @@ const state = {
         computer: document.querySelector("#computer-field-card"),
     },
 
+    playerSides: {
+        player: "player-cards",
+        playerBox: document.querySelector("#player-cards"),
+        computer: "computer-cards",
+        computerBox: document.querySelector("#computer-cards"),
+    },
+
     actions: {
         button: document.querySelector("#next-duel"),
     }
@@ -53,18 +60,23 @@ const cardData = [
 
 ]
 
-const playerSides = {
-    player: "player-cards",
-    computer: "computer-cards",
-};
-
 function getRandomCardId(min, max) {
     const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
     return cardData[randomNumber].id;
 }
 
+async function removeAllCards() {
+    let { computerBox, playerBox } = state.playerSides;
+    
+    let imagesElements = computerBox.querySelectorAll("img");
+    imagesElements.forEach((img) => img.remove());
+
+    imagesElements = playerBox.querySelectorAll("img");
+    imagesElements.forEach((img) => img.remove());
+}
+
 async function setCardsField(cardId) {
-    // await removeAllCards();
+    await removeAllCards();
 
     state.fieldCards.player.style.display = "block";
     state.fieldCards.player.src = cardData[cardId].img;
@@ -73,10 +85,10 @@ async function setCardsField(cardId) {
     state.fieldCards.computer.style.display = "block";
     state.fieldCards.computer.src = cardData[computerCardId].img;
 
-    let duelResult = await checkDuelResults(cardId, computerCardId);
+    // let duelResult = await checkDuelResults(cardId, computerCardId);
 
-    await updateScore();
-    await drownButton();
+    // await updateScore();
+    // await drownButton();
 
 }
 
@@ -93,7 +105,7 @@ async function createCardImage(idCard, fieldSide) {
     cardImage.setAttribute("data-id", idCard);
     cardImage.classList.add("card");
 
-    if (fieldSide === playerSides.player) {
+    if (fieldSide === state.playerSides.player) {
 
         cardImage.addEventListener("mouseover", () => {
             drawSelectCard(cardImage.getAttribute("data-id"));
@@ -116,8 +128,8 @@ async function drawCards(cardNumbers, fieldSide) {
 }
 
 function init() {
-    drawCards(5, playerSides.player);
-    drawCards(5, playerSides.computer);
+    drawCards(5, state.playerSides.player);
+    drawCards(5, state.playerSides.computer);
 }
 
 function resetDuel() { }
