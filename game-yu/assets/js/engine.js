@@ -63,8 +63,21 @@ function getRandomCardId(min, max) {
     return cardData[randomNumber].id;
 }
 
-function setCardsField(cardImageId) {
-    
+async function setCardsField(cardId) {
+    // await removeAllCards();
+
+    state.fieldCards.player.style.display = "block";
+    state.fieldCards.player.src = cardData[cardId].img;
+
+    let computerCardId = await getRandomCardId(0, cardData.length - 1);
+    state.fieldCards.computer.style.display = "block";
+    state.fieldCards.computer.src = cardData[computerCardId].img;
+
+    let duelResult = await checkDuelResults(cardId, computerCardId);
+
+    await updateScore();
+    await drownButton();
+
 }
 
 function drawSelectCard(index) {
