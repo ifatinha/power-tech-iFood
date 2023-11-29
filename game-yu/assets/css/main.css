@@ -140,5 +140,6 @@ body {
 }
 
 .card {
+    cursor: pointer;
     height: 100px;
 }
