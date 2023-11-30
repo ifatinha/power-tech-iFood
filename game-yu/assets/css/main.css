@@ -11,7 +11,16 @@ body {
 }
 
 body {
+    cursor     : url("../cursor/yamiyugicursorGLOW.png"), default;
     font-family: 'Press Start 2P', cursive;
+}
+
+button,
+a,
+img:hover,
+button:hover,
+a:hover {
+    cursor: url("../cursor/yugicursor.png"), default;
 }
 
 .flex {
@@ -104,8 +113,10 @@ body {
 }
 
 .card-versus {
-    gap           : 1rem;
     flex-direction: column;
+    flex          : 1;
+    gap           : 1rem;
+    padding-top   : 2rem;
 }
 
 .versus-top {
@@ -121,7 +132,6 @@ body {
 .card-infield {
     border       : 2px solid #fff;
     border-radius: 4px;
-    cursor       : pointer;
     height       : 12rem;
     width        : 8rem;
 }
@@ -148,7 +158,6 @@ body {
 }
 
 .card {
-    cursor    : pointer;
     height    : 110px;
     transition: .3s ease-in-out;
 }
@@ -156,3 +165,5 @@ body {
 .card:hover {
     transform: scale(1.1);
 }
+
+/* cursor */
