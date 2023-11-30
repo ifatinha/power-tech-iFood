@@ -67,12 +67,40 @@ function getRandomCardId(min, max) {
 
 async function removeAllCards() {
     let { computerBox, playerBox } = state.playerSides;
-    
+
     let imagesElements = computerBox.querySelectorAll("img");
     imagesElements.forEach((img) => img.remove());
 
     imagesElements = playerBox.querySelectorAll("img");
     imagesElements.forEach((img) => img.remove());
+}
+
+async function checkDuelResults(playerCardId, computerCardId) {
+    let duelResult = "Empate";
+
+    const playerCard = cardData[playerCardId];
+    const computerCard = cardData[computerCardId];
+
+    if (playerCard.winOf.includes(computerCardId)) {
+        duelResult = "Ganhou";
+        state.score.playScore++;
+    }
+
+    if (playerCard.loseOf.includes(computerCardId)) {
+        duelResult = "Perdeu";
+        state.score.computerScore++;
+    }
+
+    return duelResult;
+}
+
+async function drownButton(duelResult) {
+    state.actions.button.style.display = "block";
+    state.actions.button.innerText = duelResult;
+}
+
+async function updateScore() {
+    state.score.scoreBox.innerText = `Win: ${state.score.playScore} | Lose: ${state.score.computerScore}`;
 }
 
 async function setCardsField(cardId) {
@@ -85,10 +113,10 @@ async function setCardsField(cardId) {
     state.fieldCards.computer.style.display = "block";
     state.fieldCards.computer.src = cardData[computerCardId].img;
 
-    // let duelResult = await checkDuelResults(cardId, computerCardId);
+    let duelResult = await checkDuelResults(cardId, computerCardId);
 
-    // await updateScore();
-    // await drownButton();
+    await updateScore();
+    await drownButton(duelResult);
 
 }
 
@@ -127,13 +155,24 @@ async function drawCards(cardNumbers, fieldSide) {
     }
 }
 
+function resetDuel() {
+    state.actions.button.addEventListener("click", () => {
+        state.cardSprites.avatar.src = "";
+        state.actions.button.style.display = "none";
+
+        state.fieldCards.player.style.display = "none";
+        state.fieldCards.computer.style.display = "none";
+
+        init();
+    });
+}
+
 function init() {
     drawCards(5, state.playerSides.player);
     drawCards(5, state.playerSides.computer);
 }
 
-function resetDuel() { }
-
 (() => {
     init();
+    resetDuel();
 })()
